@@ -12,7 +12,6 @@
 # <= Gradle =>
 .gradle
 build
-gradle
 gradlew
 gradlew.bat
 
@@ -21,4 +20,4 @@ target/
 
 #   >> Contain
 !.gitattributes
-!gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
