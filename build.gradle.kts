@@ -18,8 +18,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly("net.minestom:minestom-snapshots:$minestomVersion")
-    compileOnly("ch.qos.logback:logback-classic:1.5.18")
+    implementation("net.minestom:minestom-snapshots:$minestomVersion")
+	implementation("ch.qos.logback:logback-classic:1.5.18")
 }
 
 tasks {

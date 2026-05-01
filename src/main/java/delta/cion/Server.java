@@ -35,13 +35,18 @@ public class Server {
 
 		EventManager.onEvent(AsyncPlayerConfigurationEvent.class, event -> {
 			Player player = event.getPlayer();
-			player.setInstance(instanceContainer);
+			event.setSpawningInstance(instanceContainer);
 			player.setRespawnPoint(new Pos(0.5, 50.0, 0.5));
 		});
 
 		PluginManager.init();
+		setBranding();
 		int port = 25565;
 		minecraftServer.start("0.0.0.0", port);
 		LOGGER.info("Server started on {} port.\nServer version: {}", port, MinecraftServer.VERSION_NAME);
+	}
+
+	private static void setBranding() {
+		MinecraftServer.setBrandName("Citory's server");
 	}
 }
