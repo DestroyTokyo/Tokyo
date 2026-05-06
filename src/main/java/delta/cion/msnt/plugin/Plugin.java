@@ -1,4 +1,4 @@
-package delta.cion.plugin;
+package delta.cion.msnt.plugin;
 
 import java.util.UUID;
 

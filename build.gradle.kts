@@ -5,7 +5,6 @@ plugins {
 }
 
 val minestomVersion: String by project
-val serverVersion: String by project
 
 java {
     toolchain {
@@ -25,7 +24,7 @@ dependencies {
 tasks {
     jar {
         manifest {
-            attributes["Main-Class"] = "delta.cion.Server"
+            attributes["Main-Class"] = "delta.cion.msnt.Server"
         }
     }
 

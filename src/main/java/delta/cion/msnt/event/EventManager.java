@@ -1,8 +1,8 @@
-package delta.cion.event;
+package delta.cion.msnt.event;
 
-import delta.cion.event.registration.BuilderEventRegistration;
-import delta.cion.event.registration.EventRegistration;
-import delta.cion.event.registration.SimpleEventRegistration;
+import delta.cion.msnt.event.registration.BuilderEventRegistration;
+import delta.cion.msnt.event.registration.EventRegistration;
+import delta.cion.msnt.event.registration.SimpleEventRegistration;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.event.Event;
 import net.minestom.server.event.EventListener;

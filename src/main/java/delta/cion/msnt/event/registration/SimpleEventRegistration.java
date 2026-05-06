@@ -1,7 +1,7 @@
-package delta.cion.event.registration;
+package delta.cion.msnt.event.registration;
 
 import net.minestom.server.event.Event;
-import net.minestom.server.event.EventListener;
+
 import java.util.function.Consumer;
 
 public class SimpleEventRegistration<T extends Event> extends EventRegistration<T> {

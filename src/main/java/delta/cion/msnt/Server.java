@@ -1,7 +1,8 @@
-package delta.cion;
+package delta.cion.msnt;
 
-import delta.cion.event.EventManager;
-import delta.cion.plugin.PluginManager;
+import delta.cion.msnt.config.property.ConfigBuilder;
+import delta.cion.msnt.event.EventManager;
+import delta.cion.msnt.plugin.PluginManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.serializer.ComponentSerializer;
@@ -36,6 +37,9 @@ public class Server {
 	private static final int DEFAULT_PORT = 25565;
 
 	public static void main(String[] args) {
+		try {
+			ConfigBuilder.buildConfig();
+		} catch (Exception ignored) {}
 		instanceContainer.setGenerator(unit -> {
 			Point worldStart = unit.absoluteStart();
 

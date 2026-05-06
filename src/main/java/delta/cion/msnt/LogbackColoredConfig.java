@@ -1,4 +1,4 @@
-package delta.cion;
+package delta.cion.msnt;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.spi.ILoggingEvent;

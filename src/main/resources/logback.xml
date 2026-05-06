@@ -1,7 +1,7 @@
 <configuration debug="false" packagingData="false">
 	<statusListener class="ch.qos.logback.core.status.NopStatusListener" />
 
-	<conversionRule conversionWord="highlightex" class="delta.cion.LogbackColoredConfig"/>
+	<conversionRule conversionWord="highlightex" class="delta.cion.msnt.LogbackColoredConfig"/>
 
 	<logger name="delta.cion" level="DEBUG"/>
 	<logger name="org" level="WARN"/>
