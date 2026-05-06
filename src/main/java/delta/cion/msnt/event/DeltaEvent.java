@@ -3,37 +3,54 @@ package delta.cion.msnt.event;
 import delta.cion.msnt.Server;
 import delta.cion.msnt.event.registration.SimpleEventRegistration;
 import net.minestom.server.event.Event;
+import net.minestom.server.event.EventListener;
 import net.minestom.server.event.EventNode;
 
 import java.util.UUID;
 import java.util.function.Consumer;
 
-public abstract class DeltaEvent<T extends Event> {
-	private static UUID EVENT_UUID = null;
+public abstract class DeltaEvent<T extends Event> implements AutoCloseable {
+	private UUID EVENT_UUID = null;
 	private Class<T> MINECRAFT_EVENT = null;
 
 	EventNode<Event> MY_NODE;
 
 	public DeltaEvent(Class<T> event, Consumer<T> handler) {
-		 EVENT_UUID = UUID.randomUUID();
-		 MINECRAFT_EVENT = event;
-		 MY_NODE = EventNode.all(EVENT_UUID.toString());
-		 MY_NODE.addListener(new SimpleEventRegistration<>(MINECRAFT_EVENT, EVENT_UUID.toString(), handler))
+		 this.EVENT_UUID = UUID.randomUUID();
+		 this.MINECRAFT_EVENT = event;
+		 this.MY_NODE = EventNode.all(EVENT_UUID.toString());
+		EventListener<Event> listener = buildEvent(new SimpleEventRegistration<>(MINECRAFT_EVENT, EVENT_UUID.toString(), handler));
+		 this.MY_NODE.addListener(listener);
 	}
 
-	public register() {
-		Server.getGlobalEventHandler().addChild(MY_NODE);
+	@SuppressWarnings("unchecked")
+	private EventListener<Event> buildEvent(SimpleEventRegistration<? extends Event> registration) {
+		EventListener<Event> listener;
+		SimpleEventRegistration<Event> simple = (SimpleEventRegistration<Event>) registration;
+		listener = EventListener.builder(simple.getEventClass())
+			.handler(simple.getHandler())
+			.build();
+		return listener;
 	}
 
-	public unregister() {
-
+	public void register() {
+		Server.getGlobalEventHandler().addChild(this.MY_NODE);
 	}
 
-	public static UUID getEventUuid() {
-		return EVENT_UUID;
+	public void unregister() {
+		Server.getGlobalEventHandler().removeChild(this.MY_NODE);
 	}
 
-	public static Event getMinecraftEvent() {
-		return MINECRAFT_EVENT;
+	public UUID getEventUuid() {
+		return this.EVENT_UUID;
+	}
+
+	public Class<T> getMinecraftEvent() {
+		return this.MINECRAFT_EVENT;
+	}
+
+	@Override
+	public void close() {
+		this.unregister();
 	}
 }
