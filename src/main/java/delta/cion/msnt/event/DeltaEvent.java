@@ -1,7 +1,7 @@
 package delta.cion.msnt.event;
 
 import delta.cion.msnt.Server;
-import delta.cion.msnt.event.registration.SimpleEventRegistration;
+import delta.cion.msnt.event.registration.EventRegistration;
 import net.minestom.server.event.Event;
 import net.minestom.server.event.EventListener;
 import net.minestom.server.event.EventNode;
@@ -20,16 +20,16 @@ public class DeltaEvent<T extends Event> implements AutoCloseable {
 		this.EVENT_UUID = UUID.randomUUID();
 		this.MINECRAFT_EVENT = event;
 		this.MY_NODE = EventNode.all(EVENT_UUID.toString());
-		this.EVENT_LISTENER = buildEvent(new SimpleEventRegistration<>(MINECRAFT_EVENT, EVENT_UUID.toString(), handler));
+		this.EVENT_LISTENER = buildEvent(new EventRegistration<>(MINECRAFT_EVENT, EVENT_UUID.toString(), handler));
 		this.MY_NODE.addListener(EVENT_LISTENER);
 	}
 
 	@SuppressWarnings("unchecked")
-	private EventListener<Event> buildEvent(SimpleEventRegistration<? extends Event> registration) {
+	private EventListener<Event> buildEvent(EventRegistration<? extends Event> registration) {
 		EventListener<Event> listener;
-		SimpleEventRegistration<Event> simple = (SimpleEventRegistration<Event>) registration;
-		listener = EventListener.builder(simple.getEventClass())
-			.handler(simple.getHandler())
+		EventRegistration<Event> simple = (EventRegistration<Event>) registration;
+		listener = EventListener.builder(simple.eventClass())
+			.handler(simple.handler())
 			.build();
 		return listener;
 	}

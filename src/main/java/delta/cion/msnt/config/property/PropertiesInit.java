@@ -7,11 +7,11 @@ import java.io.*;
 import java.util.Map;
 import java.util.Properties;
 
-public class ConfigBuilder {
+public class PropertiesInit {
 
 	private static final File SERVER_PROPERTIES_FILE = new File("server.properties");
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ConfigBuilder.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesInit.class);
 
 	public static void buildConfig() throws IOException {
 		if (!SERVER_PROPERTIES_FILE.exists()) {
