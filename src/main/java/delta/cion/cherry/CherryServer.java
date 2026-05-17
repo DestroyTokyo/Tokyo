@@ -3,6 +3,7 @@ package delta.cion.cherry;
 import delta.cion.cherry.command.CommandInit;
 import delta.cion.cherry.config.property.PropertiesInit;
 import delta.cion.cherry.event.events.PlayerJoinEvent;
+import delta.cion.cherry.init.ServerBranding;
 import delta.cion.cherry.motd.MOTDHandler;
 import delta.cion.cherry.plugin.PluginManager;
 import delta.cion.cherry.сonsole.ConsoleHandler;
@@ -67,7 +68,7 @@ public class CherryServer {
 	}
 
 	private static void setBranding() {
-		MinecraftServer.setBrandName("Citory's server");
+		MinecraftServer.setBrandName(ServerBranding.getBrandName());
 	}
 
 	public static boolean getLanStatus() {

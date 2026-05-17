@@ -5,7 +5,7 @@ import net.minestom.server.MinecraftServer;
 
 public class ServerBranding {
 
-	private static final String BRAND_NAME = "MSNT";
+	private static final String BRAND_NAME = "Cherry";
 	private static final String MAIN_MOTD = ServerBranding.getBrandName() + " server";
 
 	public static String getBrandName() {
