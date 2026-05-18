@@ -62,6 +62,7 @@ public class CherryServer {
 
 	private void initConfigs() {
 		try {
+			LOGGER.info("Load configs...");
 			PropertiesHandler.buildConfig();
 		} catch (Exception exception) {
 			LOGGER.error(exception.toString());

@@ -24,13 +24,19 @@ public class PropertiesHandler {
 			Map<String, String> constants = PropertyConstants.getConfig();
 			boolean all_keys = true;
 			for (String key : constants.keySet()) {
-				if (server_properties.containsKey(key)) return;
+				LOGGER.debug("Checking {} in the server.properties", key);
+				if (server_properties.containsKey(key)) {
+					LOGGER.debug("server.properties contains {}. Skipping...", key);
+					return;
+				}
 				server_properties.setProperty(key, constants.get(key));
 				all_keys = false;
 			}
 
-			if (all_keys) return;
-			LOGGER.info("server.properties updated. Added some new keys");
+			if (all_keys) {
+				LOGGER.info("server.properties contains all needed variables");
+				return;
+			} else LOGGER.debug("server.properties updating. Adding some new keys...");
 			try (OutputStream propertiesOut = new FileOutputStream(SERVER_PROPERTIES_FILE)) {
 				server_properties.store(propertiesOut, "server.properties updated");
 			}

@@ -1,38 +1,45 @@
 package delta.cion.cherry.test_plugin;
 
 import delta.cion.cherry.api.Plugin;
-import delta.cion.cherry.test_plugin.events.PlayerJoinEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import delta.cion.cherry.api.registration.DeltaEvent;
+import delta.cion.cherry.test_plugin.events.PlayerBorderEvent;
+import delta.cion.cherry.test_plugin.events.PlayerConnectionEvent;
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.event.player.AsyncPlayerConfigurationEvent;
+import net.minestom.server.event.player.PlayerDisconnectEvent;
+import net.minestom.server.event.player.PlayerMoveEvent;
 
 public class Main extends Plugin {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+	private static final Pos SPAWN_POSITION = new Pos(0.5, 50.0, 0.5);
+
+	private static DeltaEvent<PlayerMoveEvent> WORLD_BORDER;
+
+	private static DeltaEvent<AsyncPlayerConfigurationEvent> CONNECTION_EVENT;
+	private static DeltaEvent<PlayerDisconnectEvent> DISCONNECT_EVENT;
 
 	public Main() {
 		super("Cherry-Test-Plugin");
 	}
 
 	@Override
-	public void onLoad() {
-		sendLog();
-		LOGGER.info("Loaded");
-	}
-
-	@Override
 	public void onEnable() {
-		PlayerJoinEvent.register();
-		sendLog();
-		LOGGER.info("Enabled");
+		WORLD_BORDER = PlayerBorderEvent.playerMoveEvent();
+		WORLD_BORDER.register();
+
+		PlayerConnectionEvent.init();
+		CONNECTION_EVENT.register();
+		DISCONNECT_EVENT.register();
 	}
 
 	@Override
 	public void onDisable() {
-		sendLog();
-		LOGGER.info("Disabled");
+		WORLD_BORDER.unregister();
+		CONNECTION_EVENT.unregister();
+		DISCONNECT_EVENT.unregister();
 	}
 
-	private void sendLog() {
-		LOGGER.info("{} ({}) is {}", this.getName(), getId(), getStatus());
+	public static Pos getSpawnPosition() {
+		return SPAWN_POSITION;
 	}
 }
