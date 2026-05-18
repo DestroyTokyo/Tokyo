@@ -9,10 +9,10 @@ public class StopCommand extends Command {
 
 	public StopCommand() {
 		super("stop");
-		addSyntax(this::executeHello);
+		addSyntax(this::execute);
 	}
 
-	private void executeHello(CommandSender sender, CommandContext context) {
+	private void execute(CommandSender sender, CommandContext context) {
 		CherryServer.stopServer();
 	}
 }

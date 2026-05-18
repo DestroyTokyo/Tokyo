@@ -18,7 +18,7 @@ public class DeltaCommand<T extends Command> implements AutoCloseable {
 			this.commandInstance = commandClass.getDeclaredConstructor().newInstance();
 		} catch (Exception e) {
 			LOGGER.error("Cannot create the command {}", commandClass.getName());
-			throw new RuntimeException("Не удалось создать экземпляр команды " + commandClass.getName(), e);
+			throw new RuntimeException("Cannot create command instance " + commandClass.getName(), e);
 		}
 		configurator.accept(this.commandInstance);
 	}

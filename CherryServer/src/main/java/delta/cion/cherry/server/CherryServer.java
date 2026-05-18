@@ -5,6 +5,7 @@ import delta.cion.cherry.server.config.property.PropertiesInit;
 import delta.cion.cherry.server.event.events.PlayerJoinEvent;
 import delta.cion.cherry.server.init.ServerBranding;
 import delta.cion.cherry.server.motd.MOTDHandler;
+import delta.cion.cherry.server.plugin.PluginManager;
 import delta.cion.cherry.server.сonsole.ConsoleHandler;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.event.GlobalEventHandler;
@@ -32,7 +33,7 @@ public class CherryServer {
 		MOTDHandler.registerVanillaMOTD();
 		PlayerJoinEvent.register();
 
-		delta.cion.cherry.server.PluginManager.init();
+		PluginManager.init();
 		setBranding();
 
 		CommandInit commandInit = new CommandInit();
@@ -75,7 +76,7 @@ public class CherryServer {
 	}
 
 	public static void stopServer() {
-		delta.cion.cherry.server.PluginManager.disableAll();
+		PluginManager.disableAll();
 		MinecraftServer.stopCleanly();
 
 		System.exit(0);
