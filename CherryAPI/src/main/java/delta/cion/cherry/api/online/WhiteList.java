@@ -13,7 +13,7 @@ import java.util.*;
 
 public class WhiteList {
 
-	private static boolean ENABLE_WHITELIST = true;
+	private static boolean ENABLE_WHITELIST = false;
 
 	private static final File WHITELIST_FILE = new File("whitelist.json");
 

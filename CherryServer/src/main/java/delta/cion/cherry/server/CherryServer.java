@@ -1,6 +1,7 @@
 package delta.cion.cherry.server;
 
 import delta.cion.cherry.api.Plugin;
+import delta.cion.cherry.api.online.WhiteList;
 import delta.cion.cherry.server.command.ReloadCommand;
 import delta.cion.cherry.server.command.StopCommand;
 import delta.cion.cherry.server.command.WhitelistCommand;
@@ -22,6 +23,7 @@ public class CherryServer {
 
 	private static final boolean DEFAULT_OPEN_SERVER_TO_LAN = true;
 	private static final boolean DEFAULT_DEBUG_STATUS = false;
+	private static final boolean DEFAULT_WHITELIST_STATUS = false;
 	private static final String DEFAULT_SERVER_ADDRESS = "0.0.0.0";
 	private static final int DEFAULT_SERVER_PORT = 25565;
 
@@ -29,6 +31,8 @@ public class CherryServer {
 	private static boolean debugStatus = DEFAULT_DEBUG_STATUS;
 	private static String serverAddress = DEFAULT_SERVER_ADDRESS;
 	private static int serverPort = DEFAULT_SERVER_PORT;
+
+	private static boolean whitelistStatus = DEFAULT_WHITELIST_STATUS;
 
 	private static final MinecraftServer SERVER = MinecraftServer.init();
 	private static final GlobalEventHandler GLOBAL_EVENT_HANDLER = MinecraftServer.getGlobalEventHandler();
@@ -42,6 +46,8 @@ public class CherryServer {
 		loadConfig();
 
 		Plugin.setGlobalEventHandler(GLOBAL_EVENT_HANDLER);
+		WhiteList.setStatus(whitelistStatus);
+		WhiteList.loadWhitelistFromFile();
 
 		MOTDHandler.registerVanillaMOTD();
 
@@ -100,7 +106,9 @@ public class CherryServer {
 		serverPort = Integer.parseInt(server_properties.getProperty("server-port"));
 		serverAddress = server_properties.getProperty("server-ip");
 
-		debugStatus = Boolean.getBoolean(server_properties.getProperty("debug-mode"));
-		openToLan = Boolean.getBoolean(server_properties.getProperty("open-lan"));
+		debugStatus = Boolean.parseBoolean(server_properties.getProperty("debug-mode"));
+		openToLan = Boolean.parseBoolean(server_properties.getProperty("open-lan"));
+
+		whitelistStatus = Boolean.parseBoolean(server_properties.getProperty("enable-whitelist"));
 	}
 }

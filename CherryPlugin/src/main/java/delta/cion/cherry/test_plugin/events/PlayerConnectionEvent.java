@@ -32,9 +32,9 @@ public class PlayerConnectionEvent {
 			Player player = event.getPlayer();
 			String playerName = player.getUsername();
 
-			if (isWhitelisted(player))
+			if (WhiteList.getStatus() && isWhitelisted(player)) {
 				LOGGER.info("Player {} [{}] whitelisted", playerName, player.getUuid());
-			else {
+			} else if (WhiteList.getStatus() && !isWhitelisted(player)) {
 				LOGGER.info("Player {} [{}] is not whitelisted", playerName, player.getUuid());
 				player.kick("Sorry, "+playerName+", but you cannot connect to this server.");
 			}

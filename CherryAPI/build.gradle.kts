@@ -22,6 +22,7 @@ tasks {
 
 	build {
 		dependsOn(shadowJar)
+		dependsOn(publishToMavenLocal)
 	}
 
 	withType<JavaCompile> {
@@ -53,7 +54,8 @@ publishing {
 			artifactId = "cherry_api"
 			version = version
 
-			println(String.format("String to import API: ", description, minestomVersion, groupId, artifactId, version))
+			val importString = "${groupId}:${artifactId}:${version}"
+			println("String to import API: $importString")
 
 			artifact(tasks["javadocJar"])
 			artifact(tasks["sourcesJar"])

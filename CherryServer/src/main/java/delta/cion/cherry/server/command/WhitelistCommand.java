@@ -84,6 +84,7 @@ public class WhitelistCommand extends DeltaCommand<Command> {
 
 	private void reload(CommandSender sender, CommandContext context) {
 		WhiteList.loadWhitelistFromFile();
+		WhiteList.comparePlayerData();
 		sender.sendMessage("Whitelist reloaded");
 	}
 
