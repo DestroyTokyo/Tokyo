@@ -28,6 +28,9 @@ jobs:
             -   name: Upload
                 uses: actions/upload-artifact@v4
                 with:
-                    name: MSNT
-                    path: build/libs/MSNT.jar
-                    if-no-files-found: warn
+                    name: CherryBuild
+                    path: |
+                        CherryAPI/build/libs/*.jar
+                        CherryServer/build/libs/*.jar
+                        CherryPlugin/build/libs/*.jar
+                    if-no-files-found: error
