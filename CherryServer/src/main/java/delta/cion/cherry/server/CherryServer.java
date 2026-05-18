@@ -3,6 +3,7 @@ package delta.cion.cherry.server;
 import delta.cion.cherry.api.Plugin;
 import delta.cion.cherry.server.command.ReloadCommand;
 import delta.cion.cherry.server.command.StopCommand;
+import delta.cion.cherry.server.command.WhitelistCommand;
 import delta.cion.cherry.server.config.property.PropertiesHandler;
 import delta.cion.cherry.server.console.ConsoleHandler;
 import delta.cion.cherry.server.init.ServerBranding;
@@ -46,6 +47,7 @@ public class CherryServer {
 
 		new StopCommand().register();
 		new ReloadCommand().register();
+		new WhitelistCommand().register();
 		new ConsoleHandler();
 
 		SERVER.start(serverAddress, serverPort);

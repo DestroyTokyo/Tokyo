@@ -21,16 +21,10 @@ public class ReloadCommand extends DeltaCommand<Command> {
 	}
 
 	private void execute(CommandSender sender, CommandContext context) {
-		sendLog(sender, "Disabling plugins");
+		sender.sendMessage("Disabling plugins");
 		PluginManager.disableAll();
-		sendLog(sender, "Enabling plugins");
+		sender.sendMessage("Enabling plugins");
 		PluginManager.enableAll();
-		sendLog(sender, "Success plugins");
-	}
-
-	private static void sendLog(CommandSender sender, String message) {
-		if (!(sender instanceof ConsoleSender))
-			sender.sendMessage(message);
-		LOGGER.info(message);
+		sender.sendMessage("Success plugins");
 	}
 }
