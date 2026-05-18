@@ -6,7 +6,6 @@ plugins {
 
 val minestomVersion: String by project
 val logbackVersion: String by project
-val jlineVersion: String by project
 val jsonVersion: String by project
 
 allprojects {
@@ -22,7 +21,6 @@ allprojects {
 	dependencies {
 		compileOnly("net.minestom:minestom-snapshots:$minestomVersion")
 		compileOnly("ch.qos.logback:logback-classic:${logbackVersion}")
-		compileOnly("org.jline:jline:${jlineVersion}")
 		compileOnly("org.json:json:${jsonVersion}")
 	}
 

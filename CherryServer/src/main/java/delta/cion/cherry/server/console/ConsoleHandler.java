@@ -3,18 +3,15 @@ package delta.cion.cherry.server.console;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.command.CommandSender;
 import net.minestom.server.command.ConsoleSender;
-import org.jline.reader.LineReader;
-import org.jline.reader.LineReaderBuilder;
-import org.jline.terminal.Terminal;
-import org.jline.terminal.TerminalBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class ConsoleHandler {
-
-	private static LineReader READER;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ConsoleHandler.class);
 
@@ -24,33 +21,31 @@ public class ConsoleHandler {
 
 	public ConsoleHandler() {
 		if (isInit()) return;
-		try {
-			Terminal TERMINAL = TerminalBuilder.builder().dumb(true).build();
-			READER = LineReaderBuilder.builder().terminal(TERMINAL).build();
-			READER.setOpt(LineReader.Option.DISABLE_EVENT_EXPANSION);
-			CONSOLE_SENDER = new ConsoleSender();
-			Thread CONSOLE_THREAD = new Thread(this::run);
-			CONSOLE_THREAD.start();
-			CREATED = true;
-		} catch (IOException exception) {
-			LOGGER.error("Cannot start ConsoleHandler.", exception);
-		}
+		CONSOLE_SENDER = new ConsoleSender();
+		Thread consoleThread = new Thread(this::run);
+		consoleThread.start();
+		CREATED = true;
 	}
 
 	private boolean isInit() {
 		if (CREATED) {
 			LOGGER.warn("Cannot create second ConsoleHandler instance.");
 			return true;
-		} else return false;
+		}
+		return false;
 	}
 
 	private void run() {
-		while (true) {
-			String line = READER.readLine("");
-			if (line.isEmpty()) continue;
-			LOGGER.info("Console typed: {}", line);
-			MinecraftServer.getCommandManager().execute(CONSOLE_SENDER, line.trim());
-			saveInput(line);
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8))) {
+			String line;
+			while ((line = reader.readLine()) != null) {
+				if (line.isEmpty()) continue;
+				LOGGER.info("Console typed: {}", line);
+				MinecraftServer.getCommandManager().execute(CONSOLE_SENDER, line.trim());
+				saveInput(line);
+			}
+		} catch (IOException e) {
+			LOGGER.error("Console read error", e);
 		}
 	}
 
@@ -61,5 +56,4 @@ public class ConsoleHandler {
 	private static String getLastInput() {
 		return LAST_INPUT;
 	}
-
 }

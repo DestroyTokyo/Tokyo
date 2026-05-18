@@ -7,7 +7,6 @@ val projectVersion: String by project
 
 val minestomVersion: String by project
 val logbackVersion: String by project
-val jlineVersion: String by project
 val jsonVersion: String by project
 
 group = "delta.cion.cherry.api"
@@ -16,7 +15,6 @@ version = projectVersion
 dependencies {
 	implementation("net.minestom:minestom-snapshots:$minestomVersion")
 	implementation("ch.qos.logback:logback-classic:${logbackVersion}")
-	implementation("org.jline:jline:${jlineVersion}")
 	implementation("org.json:json:${jsonVersion}")
 }
 

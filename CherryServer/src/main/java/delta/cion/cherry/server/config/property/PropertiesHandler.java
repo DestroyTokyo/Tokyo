@@ -24,9 +24,9 @@ public class PropertiesHandler {
 			Map<String, String> constants = PropertyConstants.getConfig();
 			boolean all_keys = true;
 			for (String key : constants.keySet()) {
-				LOGGER.debug("Checking {} in the server.properties", key);
+				//LOGGER.debug("Checking {} in the server.properties", key);
 				if (server_properties.containsKey(key)) {
-					LOGGER.debug("server.properties contains {}. Skipping...", key);
+				//	LOGGER.debug("server.properties contains {}. Skipping...", key);
 					continue;
 				}
 				server_properties.setProperty(key, constants.get(key));
