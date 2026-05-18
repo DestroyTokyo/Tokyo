@@ -15,6 +15,7 @@ public class PropertyConstants {
 		config.put("server-port", "25565");
 		config.put("debug", "false");
 		config.put("online-mode", "false");
+		config.put("open-lan", "false");
 
 		return config;
 	}

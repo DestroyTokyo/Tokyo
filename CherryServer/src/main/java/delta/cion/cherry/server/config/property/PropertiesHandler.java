@@ -7,11 +7,11 @@ import java.io.*;
 import java.util.Map;
 import java.util.Properties;
 
-public class PropertiesInit {
+public class PropertiesHandler {
 
 	private static final File SERVER_PROPERTIES_FILE = new File("server.properties");
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesInit.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesHandler.class);
 
 	public static void buildConfig() throws IOException {
 		if (!SERVER_PROPERTIES_FILE.exists()) {
@@ -34,6 +34,23 @@ public class PropertiesInit {
 			try (OutputStream propertiesOut = new FileOutputStream(SERVER_PROPERTIES_FILE)) {
 				server_properties.store(propertiesOut, "server.properties updated");
 			}
+		}
+	}
+
+	public static Properties getProperties(String propertiesPath) {
+		File propertiesFile = new File(propertiesPath);
+		if (!propertiesFile.exists()) {
+			LOGGER.error("Cannot found {}, try to check file permissions or location", propertiesPath);
+			return null;
+		}
+
+		try (InputStream propertiesStream = new FileInputStream(SERVER_PROPERTIES_FILE)) {
+			Properties properties = new Properties();
+			properties.load(propertiesStream);
+			return properties;
+		} catch (IOException e) {
+			LOGGER.error("Cannot load properties file ({}). Try to check file permissions or location.", propertiesPath, e);
+			return null;
 		}
 	}
 }

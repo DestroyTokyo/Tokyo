@@ -21,9 +21,9 @@ allprojects {
 
 	dependencies {
 		compileOnly("net.minestom:minestom-snapshots:$minestomVersion")
-		implementation("ch.qos.logback:logback-classic:${logbackVersion}")
-		implementation("org.jline:jline:${jlineVersion}")
-		implementation("org.json:json:${jsonVersion}")
+		compileOnly("ch.qos.logback:logback-classic:${logbackVersion}")
+		compileOnly("org.jline:jline:${jlineVersion}")
+		compileOnly("org.json:json:${jsonVersion}")
 	}
 
 	repositories {
