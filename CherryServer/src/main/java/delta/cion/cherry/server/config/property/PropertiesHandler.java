@@ -27,7 +27,7 @@ public class PropertiesHandler {
 				LOGGER.debug("Checking {} in the server.properties", key);
 				if (server_properties.containsKey(key)) {
 					LOGGER.debug("server.properties contains {}. Skipping...", key);
-					return;
+					continue;
 				}
 				server_properties.setProperty(key, constants.get(key));
 				all_keys = false;

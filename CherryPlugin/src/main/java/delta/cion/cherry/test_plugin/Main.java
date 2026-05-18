@@ -28,6 +28,8 @@ public class Main extends Plugin {
 		WORLD_BORDER.register();
 
 		PlayerConnectionEvent.init();
+		CONNECTION_EVENT = PlayerConnectionEvent.connectPlayer();
+		DISCONNECT_EVENT = PlayerConnectionEvent.exitPlayer();
 		CONNECTION_EVENT.register();
 		DISCONNECT_EVENT.register();
 	}
