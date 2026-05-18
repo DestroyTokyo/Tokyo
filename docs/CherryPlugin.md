@@ -8,7 +8,28 @@
 
 ---
 
-```txt
+<h3 align="center">--==[ Main class example ]==--</h3>
+
+```java
+package delta.cion.cherry.test_plugin;
+
+import delta.cion.cherry.api.Plugin;
+
+public class Main extends Plugin {
+
+	// Set plugin name there
+	public Main() {
+		super("Cherry-Test-Plugin");
+	}
+
+	// When plugin enabled
+	@Override
+	public void onEnable() {}
+
+	// When plugin disabled
+	@Override
+	public void onDisable() {}
+}
 
 ```
 
