@@ -2,12 +2,16 @@
 # By: Lmao stupid Cion #
 # ==================== #
 
-# <= Main => #
+# <= Main =>
 .env
 *.iml
 *.iws
 .zed
 .idea
+
+# <= Sometimes it appears =>
+./src/
+test/
 
 # <= Gradle =>
 .gradle
@@ -22,7 +26,7 @@ target/
 !.gitattributes
 gradle/wrapper/gradle-wrapper.jar
 
-# Server
+# <= Server =>
 server.properties
 plugins/
 logs/

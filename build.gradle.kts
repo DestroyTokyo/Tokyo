@@ -9,40 +9,24 @@ val logbackVersion: String by project
 val jlineVersion: String by project
 val jsonVersion: String by project
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
+allprojects {
+	apply(plugin = "java")
+	apply(plugin = "com.gradleup.shadow")
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation("net.minestom:minestom-snapshots:$minestomVersion")
-	implementation("ch.qos.logback:logback-classic:$logbackVersion")
-	implementation("org.jline:jline:$jlineVersion")
-	implementation("org.json:json:$jsonVersion")
-}
-
-tasks {
-    jar {
-        manifest {
-            attributes["Main-Class"] = "delta.cion.cherry.CherryServer"
-        }
-    }
-
-    build {
-        dependsOn(shadowJar)
-    }
-
-	withType<JavaCompile> {
-		options.encoding = "UTF-8"
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(21)
+		}
 	}
 
-    shadowJar {
-        mergeServiceFiles()
-        archiveClassifier.set("")
-    }
+	dependencies {
+		compileOnly("net.minestom:minestom-snapshots:$minestomVersion")
+		implementation("ch.qos.logback:logback-classic:${logbackVersion}")
+		implementation("org.jline:jline:${jlineVersion}")
+		implementation("org.json:json:${jsonVersion}")
+	}
+
+	repositories {
+		mavenCentral()
+	}
 }
