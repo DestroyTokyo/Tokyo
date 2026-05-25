@@ -12,11 +12,16 @@ import delta.cion.cherry.server.init.ServerBranding;
 import delta.cion.cherry.server.motd.MOTDHandler;
 import delta.cion.cherry.server.plugin.PluginManager;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.entity.Player;
 import net.minestom.server.event.GlobalEventHandler;
 import net.minestom.server.extras.lan.OpenToLAN;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.Properties;
 
 public class CherryServer {
@@ -94,10 +99,23 @@ public class CherryServer {
 	}
 
 	public static void stopServer() {
-		PluginManager.disableAll();
-		MinecraftServer.stopCleanly();
+		if (kickAll()) {
+			PluginManager.disableAll();
+			MinecraftServer.stopCleanly();
+			System.exit(0);
+		}
+	}
 
-		System.exit(0);
+	private static boolean kickAll() {
+		MinecraftServer.getConnectionManager().getOnlinePlayers()
+			.forEach(player -> player.kick("Server shutdown.\n"+printDate()));
+		return true;
+	}
+
+	private static String printDate() {
+		LocalDateTime now = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("[MM.dd.yyyy ~ HH:mm:ss]");
+		return now.format(formatter);
 	}
 
 	private static void loadConfig() {

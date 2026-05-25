@@ -24,7 +24,7 @@ public final class LogbackConfig extends ForegroundCompositeConverterBase<ILoggi
 	public static void enableDebugLogs(boolean status) {
 		Logger LOGGER = (Logger) LoggerFactory.getLogger("delta.cion");
 		if (status) LOGGER.setLevel(Level.DEBUG);
-		LOGGER.setLevel(Level.INFO);
+		else LOGGER.setLevel(Level.INFO);
 	}
 
 }

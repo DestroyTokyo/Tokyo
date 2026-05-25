@@ -11,6 +11,7 @@ import net.minestom.server.command.builder.arguments.ArgumentType;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.instance.InstanceContainer;
 import net.minestom.server.instance.block.Block;
 import org.slf4j.Logger;
@@ -20,7 +21,7 @@ public class TestUnit extends DeltaCommand {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(TestUnit.class);
 
-	private static Entity TEST_UNIT;
+	private static LivingEntity TEST_UNIT;
 
 	private static boolean SPAWNED;
 
@@ -39,8 +40,8 @@ public class TestUnit extends DeltaCommand {
 		InstanceContainer world = getWorld();
 		assert world != null;
 
-		Pos mobPosition = Main.getMobPosition();
-		world.setBlock(mobPosition, Block.BEDROCK);
+		LOGGER.debug("Block spawned on {}", Main.getMobPosition());
+		world.setBlock(Main.getMobPosition().withY(49), Block.BEDROCK);
 
 		String mobName = context.get("unit");
 		EntityType unitType = EntityType.fromKey(mobName);
@@ -49,10 +50,13 @@ public class TestUnit extends DeltaCommand {
 			sender.sendMessage("Try to check unit id in minecraft wiki or Minestom docs.");
 			return;
 		}
-		TEST_UNIT = new Entity(unitType);
 
-		TEST_UNIT.setInstance(world, Main.getMobPosition().withY(51));
-		TEST_UNIT.lookAt(Main.getSpawnPosition().withY(52));
+		TEST_UNIT = new LivingEntity(unitType);
+
+		TEST_UNIT.setInstance(world, Main.getMobPosition());
+		LOGGER.debug("Unit instance is {}, with Pos on {}", world, Main.getMobPosition());
+		TEST_UNIT.lookAt(Main.getSpawnPosition().withY(51));
+		LOGGER.debug("Unit look at {}", Main.getSpawnPosition().withY(51));
 		sender.sendMessage("Test unit "+mobName+" spawned.");
 	}
 
@@ -64,7 +68,7 @@ public class TestUnit extends DeltaCommand {
 		TEST_UNIT.remove();
 		sender.sendMessage("Test unit "+TEST_UNIT+" removed.");
 		TEST_UNIT = null;
-		Pos mobPosition = Main.getMobPosition();
+		Pos mobPosition = Main.getMobPosition().withY(49);
 		world.setBlock(mobPosition, Block.AIR);
 	}
 

@@ -37,6 +37,7 @@ public class PlayerConnectionEvent {
 			} else if (WhiteList.getStatus() && !isWhitelisted(player)) {
 				LOGGER.info("Player {} [{}] is not whitelisted", playerName, player.getUuid());
 				player.kick("Sorry, "+playerName+", but you cannot connect to this server.");
+				return;
 			}
 
 			event.setSpawningInstance(baseWorld.getWorldContainer());
