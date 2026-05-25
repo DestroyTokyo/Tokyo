@@ -8,8 +8,10 @@ import net.minestom.server.command.builder.Command;
 import net.minestom.server.command.builder.CommandContext;
 import net.minestom.server.command.builder.arguments.ArgumentString;
 import net.minestom.server.command.builder.arguments.ArgumentType;
+import net.minestom.server.command.builder.arguments.ArgumentWord;
 import net.minestom.server.command.builder.arguments.minecraft.ArgumentIntRange;
 import net.minestom.server.command.builder.arguments.number.ArgumentInteger;
+import net.minestom.server.command.builder.suggestion.SuggestionEntry;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.LivingEntity;
@@ -28,7 +30,13 @@ public class GetCommand extends DeltaCommand {
 	public GetCommand() {
 		super(new Command("get"));
 
-		ArgumentString itemArg = ArgumentType.String("item");
+		ArgumentWord itemArg = ArgumentType.Word("item");
+
+		itemArg.setSuggestionCallback((sender, context, suggestion) -> {
+			Material.values().forEach(material ->
+				suggestion.addEntry(new SuggestionEntry(material.name().toLowerCase())));
+		});
+
 		ArgumentInteger itemCount = ArgumentType.Integer("item_count");
 		itemCount.setDefaultValue(1);
 		getCommand().addSyntax(this::getItem, itemArg, itemCount);
