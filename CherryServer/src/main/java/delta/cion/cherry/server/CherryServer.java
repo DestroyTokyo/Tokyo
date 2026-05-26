@@ -68,11 +68,19 @@ public class CherryServer {
 		PluginManager.init();
 		setBranding();
 
+		// Permissions
 		new OpCommand().register();
 		new DeopCommand().register();
+		new PermissionCommand().register();
+
+		// Server stop | plugins reload
 		new StopCommand().register();
 		new ReloadCommand().register();
+
+		// Util
 		new WhitelistCommand().register();
+
+		// Not command bruh
 		new ConsoleHandler();
 
 		LogbackConfig.enableDebugLogs(debugStatus);
