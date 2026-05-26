@@ -24,7 +24,7 @@ public class Localize {
 		var server_locale_name = "locale/"+localeName+".properties";
 		var server_locale_file = new File(server_locale_name);
 		if (!server_locale_file.getParentFile().exists())
-			server_locale_file.mkdirs();
+			server_locale_file.getParentFile().mkdirs();
 		if (server_locale_file.exists()) {
 			SERVER_LOCALE_FILE = server_locale_file;
 			useDefault = false;
@@ -34,12 +34,14 @@ public class Localize {
 	}
 
 	public static String getTranslate(String key) {
+		if (LOCALE_KEYS == null) return key;
 		return LOCALE_KEYS.get(key);
 	}
 
 	public static String getTranslate(String key, Object... objects) {
 		String template = LOCALE_KEYS.get(key);
 		if (template == null) return key;
+		if (template.equals(key)) return key;
 		return MessageFormat.format(template, objects);
 	}
 
