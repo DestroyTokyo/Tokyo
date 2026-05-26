@@ -12,7 +12,7 @@ public final class DefaultLocale {
 	static {
 		addEntry("no-permission", "You dont have permissions to /{0}", "Player tried to use command what he hasn't permissions");
 		addEntry("not-whitelisted", "Sorry, {0}, but you cannot connect to this server.", "Unwhitelisted player tried to join");
-		addEntry("server-closed", "Server closed\n{0}", "Server closed message with timestamp");
+		addEntry("server-closed", "Server closed\\n{0}", "Server closed message with timestamp");
 	}
 
 	private static void addEntry(String key, String translation, String comment) {
