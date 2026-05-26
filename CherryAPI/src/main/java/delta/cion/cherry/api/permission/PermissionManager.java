@@ -64,7 +64,7 @@ public class PermissionManager {
 		for (int i = 0; i < perms.length - 1; i++) {
 			if (i > 0) builder.append(".");
 			builder.append(perms[i]);
-			String parentPerm = builder.toString() + ".*";
+			String parentPerm = builder + ".*";
 			if (permissionList.contains(parentPerm)) return true;
 		}
 		return false;
