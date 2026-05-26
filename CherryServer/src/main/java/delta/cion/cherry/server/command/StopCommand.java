@@ -18,7 +18,7 @@ public class StopCommand extends DeltaCommand {
 
 	private void execute(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "server.stop")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
-		CherryServer.stopServer();
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
+		else CherryServer.stopServer();
 	}
 }

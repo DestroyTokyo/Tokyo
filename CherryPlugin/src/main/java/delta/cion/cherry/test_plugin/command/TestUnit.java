@@ -48,7 +48,7 @@ public class TestUnit extends DeltaCommand {
 
 	private void spawnMob(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "spawn.spawn")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		InstanceContainer world = getWorld();
 		assert world != null;
@@ -75,7 +75,7 @@ public class TestUnit extends DeltaCommand {
 
 	private void killMob(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "spawn.kill")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		InstanceContainer world = getWorld();
 		assert world != null;

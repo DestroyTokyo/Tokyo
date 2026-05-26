@@ -25,7 +25,7 @@ public class ReloadCommand extends DeltaCommand {
 
 	private void execute(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "server.reload")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 		sender.sendMessage("Disabling plugins");
 		PluginManager.disableAll();
 		sender.sendMessage("Enabling plugins");

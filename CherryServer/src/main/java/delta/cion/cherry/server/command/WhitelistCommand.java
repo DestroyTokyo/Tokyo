@@ -57,7 +57,7 @@ public class WhitelistCommand extends DeltaCommand {
 
 	private void addPlayer(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "whitelist.add")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		String player = context.get("player");
 		UUID uuid = parseUUID(player);
@@ -75,7 +75,7 @@ public class WhitelistCommand extends DeltaCommand {
 
 	private void removePlayer(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "whitelist.remove")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		String player = context.get("player");
 		UUID uuid = parseUUID(player);
@@ -93,7 +93,7 @@ public class WhitelistCommand extends DeltaCommand {
 
 	private void reload(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "whitelist.reload")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		WhiteList.loadWhitelistFromFile();
 		WhiteList.comparePlayerData();
@@ -102,7 +102,7 @@ public class WhitelistCommand extends DeltaCommand {
 
 	private void enableWhitelist(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "whitelist.enable")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		if (WhiteList.getStatus()) {
 			sender.sendMessage("Whitelist already enabled!");
@@ -114,7 +114,7 @@ public class WhitelistCommand extends DeltaCommand {
 
 	private void disableWhitelist(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "whitelist.disable")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		if (!WhiteList.getStatus()) {
 			sender.sendMessage("Whitelist already disabled!");
@@ -126,7 +126,7 @@ public class WhitelistCommand extends DeltaCommand {
 
 	private void whitelistStatus(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "whitelist.status")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		int whitelistedPlayersCount = WhiteList.getWhitelist().size();
 		sender.sendMessage("Whitelist status: ["+WhiteList.getStatus()+"].");

@@ -24,7 +24,7 @@ public class DeopCommand extends DeltaCommand {
 
 	private void execute(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "server.deop")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 		String player = context.get("player");
 		PermissionManager.removePermission(player, "*");
 	}

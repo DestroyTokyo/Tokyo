@@ -5,9 +5,7 @@ import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.online.WhiteList;
 import delta.cion.cherry.api.permission.PermissionHandler;
 import delta.cion.cherry.api.permission.PermissionManager;
-import delta.cion.cherry.server.command.ReloadCommand;
-import delta.cion.cherry.server.command.StopCommand;
-import delta.cion.cherry.server.command.WhitelistCommand;
+import delta.cion.cherry.server.command.*;
 import delta.cion.cherry.server.config.property.PropertiesHandler;
 import delta.cion.cherry.server.console.ConsoleHandler;
 import delta.cion.cherry.server.console.LogbackConfig;
@@ -70,6 +68,8 @@ public class CherryServer {
 		PluginManager.init();
 		setBranding();
 
+		new OpCommand().register();
+		new DeopCommand().register();
 		new StopCommand().register();
 		new ReloadCommand().register();
 		new WhitelistCommand().register();

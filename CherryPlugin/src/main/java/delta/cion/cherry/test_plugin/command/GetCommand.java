@@ -50,7 +50,7 @@ public class GetCommand extends DeltaCommand {
 
 	private void getItem(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "get.item")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		if (isConsole(sender)) return;
 		int itemCount = context.get("item_count");
@@ -72,7 +72,7 @@ public class GetCommand extends DeltaCommand {
 
 	private void removeItem(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "get.remove")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 
 		if (isConsole(sender)) return;
 		((Player) sender).setItemInHand(PlayerHand.MAIN, ItemStack.AIR);

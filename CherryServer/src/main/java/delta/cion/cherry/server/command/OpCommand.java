@@ -3,7 +3,6 @@ package delta.cion.cherry.server.command;
 import delta.cion.cherry.api.command.DeltaCommand;
 import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.permission.PermissionManager;
-import delta.cion.cherry.server.plugin.PluginManager;
 import net.minestom.server.command.CommandSender;
 import net.minestom.server.command.builder.Command;
 import net.minestom.server.command.builder.CommandContext;
@@ -25,7 +24,7 @@ public class OpCommand  extends DeltaCommand {
 
 	private void execute(CommandSender sender, CommandContext context) {
 		if (sender instanceof Player player && !PermissionManager.hasPermission(player, "server.op")) {
-			sender.sendMessage(Localize.getTranslate("no-permission")); return; }
+			sender.sendMessage(Localize.getTranslate("no-permission", getCommand().getName())); return; }
 		String player = context.get("player");
 		PermissionManager.addPermission(player, "*");
 	}
