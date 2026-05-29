@@ -1,28 +1,24 @@
 package delta.cion.cherry.server;
 
 import delta.cion.cherry.api.Plugin;
+import delta.cion.cherry.api.ServerBranding;
 import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.online.WhiteList;
 import delta.cion.cherry.api.permission.PermissionHandler;
-import delta.cion.cherry.api.permission.PermissionManager;
 import delta.cion.cherry.server.command.*;
 import delta.cion.cherry.server.config.property.PropertiesHandler;
 import delta.cion.cherry.server.console.ConsoleHandler;
 import delta.cion.cherry.server.console.LogbackConfig;
-import delta.cion.cherry.server.init.ServerBranding;
 import delta.cion.cherry.server.motd.MOTDHandler;
 import delta.cion.cherry.server.plugin.PluginManager;
 import net.minestom.server.MinecraftServer;
-import net.minestom.server.entity.Player;
 import net.minestom.server.event.GlobalEventHandler;
 import net.minestom.server.extras.lan.OpenToLAN;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
 import java.util.Properties;
 
 public class CherryServer {
@@ -87,7 +83,8 @@ public class CherryServer {
 		SERVER.start(serverAddress, serverPort);
 		if (openToLan) OpenToLAN.open();
 		LOGGER.info("Server started on {}:{}.", serverAddress, serverPort);
-		LOGGER.info("Server version: {}", MinecraftServer.VERSION_NAME);
+		LOGGER.info("Minecraft version: {}", MinecraftServer.VERSION_NAME);
+		LOGGER.info("Minecraft version: {}", ServerBranding.getServerVersion());
 	}
 
 	public static void main(String[] args) {
@@ -154,4 +151,10 @@ public class CherryServer {
 
 		whitelistStatus = Boolean.parseBoolean(server_properties.getProperty("enable-whitelist"));
 	}
+
+	public static void setServerBranding() {
+		MinecraftServer.setBrandName(ServerBranding.getBrandName());
+		MOTDHandler.registerVanillaMOTD();
+	}
+
 }

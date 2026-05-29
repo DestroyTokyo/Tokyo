@@ -34,6 +34,12 @@ tasks {
 		archiveClassifier.set("")
 	}
 
+	processResources {
+		filesMatching("version.properties") {
+			expand("project.version" to project.version)
+		}
+	}
+
 	register<Jar>("javadocJar") {
 		dependsOn(javadoc)
 		archiveClassifier.set("javadoc")
