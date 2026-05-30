@@ -1,8 +1,12 @@
 package delta.cion.cherry.test_plugin.event;
 
 import delta.cion.cherry.api.event.DeltaEvent;
+import delta.cion.cherry.api.locales.Localize;
+import delta.cion.cherry.api.permission.PermissionManager;
 import delta.cion.cherry.test_plugin.Main;
 import net.minestom.server.entity.Player;
+import net.minestom.server.event.player.PlayerBlockBreakEvent;
+import net.minestom.server.event.player.PlayerBlockPlaceEvent;
 import net.minestom.server.event.player.PlayerMoveEvent;
 
 public class PlayerBorderEvent {
@@ -13,6 +17,8 @@ public class PlayerBorderEvent {
 	public static DeltaEvent<PlayerMoveEvent> playerMoveEvent() {
 		return new DeltaEvent<>(PlayerMoveEvent.class, event -> {
 			Player player = event.getPlayer();
+			if (PermissionManager.hasPermission(player, "bypass.border")) return;
+
 			int newX = event.getNewPosition().blockX();
 			int newY = event.getNewPosition().blockY();
 			int newZ = event.getNewPosition().blockZ();
@@ -24,5 +30,17 @@ public class PlayerBorderEvent {
 	private static void checkPosition(Player player, int x, int z, int y) {
 		if (Math.abs(x) > BORDER || Math.abs(z) > BORDER || y < BORDER_HEIGHT_MIN)
 			player.teleport(Main.getSpawnPosition());
+	}
+
+	public static DeltaEvent<PlayerBlockBreakEvent> playerBlockBreakEvent() {
+		return new DeltaEvent<>(PlayerBlockBreakEvent.class, event -> {
+			event.setCancelled(true);
+		});
+	}
+
+	public static DeltaEvent<PlayerBlockPlaceEvent> playerBlockPlaceEvent() {
+		return new DeltaEvent<>(PlayerBlockPlaceEvent.class, event -> {
+			event.setCancelled(true);
+		});
 	}
 }
