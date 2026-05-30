@@ -23,7 +23,7 @@ allprojects {
 	}
 
 	checkstyle {
-		configFile = rootProject.file("config/checkstyle/checkstyle.xml")
+		configFile = rootProject.file(".checkstyle/config.xml")
 	}
 
 	dependencies {

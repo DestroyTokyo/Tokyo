@@ -83,8 +83,9 @@ public class CherryServer {
 		SERVER.start(serverAddress, serverPort);
 		if (openToLan) OpenToLAN.open();
 		LOGGER.info("Server started on {}:{}.", serverAddress, serverPort);
+		LOGGER.info("Server version: {}", ServerBranding.getServerVersion());
 		LOGGER.info("Minecraft version: {}", MinecraftServer.VERSION_NAME);
-		LOGGER.info("Minecraft version: {}", ServerBranding.getServerVersion());
+		LOGGER.error("(This text needed for server panels only. Just ignore it)! For help, type /help");
 	}
 
 	public static void main(String[] args) {

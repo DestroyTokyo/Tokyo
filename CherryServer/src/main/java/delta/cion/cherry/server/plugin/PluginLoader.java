@@ -43,7 +43,7 @@ public class PluginLoader {
 		try {
 			URLClassLoader classLoader = new URLClassLoader(
 				new java.net.URL[] { jarFile.toURI().toURL() },
-				Plugin.class.getClassLoader()
+				PluginLoader.class.getClassLoader()
 			);
 
 			Properties properties = new Properties();
@@ -61,11 +61,16 @@ public class PluginLoader {
 				return null;
 			}
 
+			String pluginDependencies = properties.getProperty("plugin-dependencies");
+			if (pluginDependencies != null) {
+				LOGGER.info("Founded plugin-dependencies. But it dont used on this time lol");
+			}
+
 			Class<?> clazz = Class.forName(mainClassName, true, classLoader);
 			Object instance = clazz.getDeclaredConstructor().newInstance();
 
 			if (instance instanceof Plugin) {
-				((Plugin) instance).setGlobalEventHandler(CherryServer.getGlobalEventHandler());
+				Plugin.setGlobalEventHandler(CherryServer.getGlobalEventHandler());
 				return (Plugin) instance;
 			}
 			else {
