@@ -1,7 +1,7 @@
 package delta.cion.cherry.server.motd;
 
+import delta.cion.cherry.api.ServerBranding;
 import delta.cion.cherry.server.CherryServer;
-import delta.cion.cherry.server.init.ServerBranding;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.server.ServerListPingEvent;

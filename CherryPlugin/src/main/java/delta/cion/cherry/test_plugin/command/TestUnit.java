@@ -85,7 +85,7 @@ public class TestUnit extends DeltaCommand {
 		sender.sendMessage("Test unit "+TEST_UNIT+" removed.");
 		TEST_UNIT = null;
 		Pos mobPosition = Main.getMobPosition().withY(49);
-		world.setBlock(mobPosition, Block.AIR);
+		world.setBlock(mobPosition, Block.STONE_BRICKS);
 	}
 
 	private InstanceContainer getWorld() {

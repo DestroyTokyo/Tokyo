@@ -1,6 +1,6 @@
 0 - Success
 
-0 - 99 - Another errors (Not documented yet..)
+1 - 99 - Another errors (Not documented yet..)
 
 Options error (1XX)
 100 - Error with creating config files

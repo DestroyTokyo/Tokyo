@@ -34,6 +34,15 @@ tasks {
 		archiveClassifier.set("")
 	}
 
+	processResources {
+		filteringCharset = "UTF-8"
+		filesMatching("cherry.properties") {
+			filter { line ->
+				line.replace("\${project.version}", projectVersion)
+			}
+		}
+	}
+
 	register<Jar>("javadocJar") {
 		dependsOn(javadoc)
 		archiveClassifier.set("javadoc")

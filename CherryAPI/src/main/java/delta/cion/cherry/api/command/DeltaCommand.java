@@ -38,6 +38,14 @@ public class DeltaCommand implements AutoCloseable {
 		return commandInstance;
 	}
 
+	public void registerPermission() {
+
+	}
+
+	public void registerSubPermissions() {
+
+	}
+
 	@Override
 	public void close() {
 		unregister();
