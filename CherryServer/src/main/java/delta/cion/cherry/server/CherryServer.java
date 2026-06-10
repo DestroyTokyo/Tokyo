@@ -10,6 +10,7 @@ import delta.cion.cherry.server.config.property.PropertiesHandler;
 import delta.cion.cherry.server.console.ConsoleHandler;
 import delta.cion.cherry.server.console.LogbackConfig;
 import delta.cion.cherry.server.init.ServerBranding;
+import delta.cion.cherry.server.license.LicenseFile;
 import delta.cion.cherry.server.motd.MOTDHandler;
 import delta.cion.cherry.server.plugin.PluginManager;
 import net.minestom.server.MinecraftServer;
@@ -53,6 +54,8 @@ public class CherryServer {
 	}
 
 	private void start() {
+		new LicenseFile();
+
 		initConfigs();
 		loadConfig();
 

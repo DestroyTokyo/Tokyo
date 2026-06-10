@@ -10,6 +10,10 @@
 	<b>--==[ <a href="msnt.progress.txt">Ну а так - Вот</a> ]==--</b>
 </p>
 
+<p align="center">
+	<b>--==[ <a href="docs/CodeStyle.md">CODESTYLE</a> ]==--</b>
+</p>
+
 ---
 
 <p align="center">

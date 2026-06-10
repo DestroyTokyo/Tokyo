@@ -5,6 +5,8 @@ import java.util.Map;
 
 public final class DefaultLocale {
 
+	private DefaultLocale() {}
+
 	private static final Map<String, String> TRANSLATIONS = new LinkedHashMap<>();
 
 	private static final Map<String, String> COMMENTS = new LinkedHashMap<>();
@@ -28,5 +30,4 @@ public final class DefaultLocale {
 		return COMMENTS;
 	}
 
-	private DefaultLocale() {}
 }
