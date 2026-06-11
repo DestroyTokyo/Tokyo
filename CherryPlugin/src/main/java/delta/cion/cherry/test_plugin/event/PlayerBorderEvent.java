@@ -3,7 +3,7 @@ package delta.cion.cherry.test_plugin.event;
 import delta.cion.cherry.api.event.DeltaEvent;
 import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.permission.PermissionManager;
-import delta.cion.cherry.test_plugin.Main;
+import delta.cion.cherry.test_plugin.TestPlugin;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.player.PlayerBlockBreakEvent;
 import net.minestom.server.event.player.PlayerBlockPlaceEvent;
@@ -29,7 +29,7 @@ public class PlayerBorderEvent {
 
 	private static void checkPosition(Player player, int x, int z, int y) {
 		if (Math.abs(x) > BORDER || Math.abs(z) > BORDER || y < BORDER_HEIGHT_MIN)
-			player.teleport(Main.getSpawnPosition());
+			player.teleport(TestPlugin.getSpawnPosition());
 	}
 
 	public static DeltaEvent<PlayerBlockBreakEvent> playerBlockBreakEvent() {

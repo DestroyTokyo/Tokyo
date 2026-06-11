@@ -4,7 +4,7 @@ import delta.cion.cherry.api.command.DeltaCommand;
 import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.permission.PermissionManager;
 import delta.cion.cherry.api.world.WorldRegistration;
-import delta.cion.cherry.test_plugin.Main;
+import delta.cion.cherry.test_plugin.TestPlugin;
 import net.minestom.server.command.CommandSender;
 import net.minestom.server.command.builder.Command;
 import net.minestom.server.command.builder.CommandContext;
@@ -53,8 +53,8 @@ public class TestUnit extends DeltaCommand {
 		InstanceContainer world = getWorld();
 		assert world != null;
 
-		LOGGER.debug("Block spawned on {}", Main.getMobPosition());
-		world.setBlock(Main.getMobPosition().withY(49), Block.BEDROCK);
+		LOGGER.debug("Block spawned on {}", TestPlugin.getMobPosition());
+		world.setBlock(TestPlugin.getMobPosition().withY(49), Block.BEDROCK);
 
 		String mobName = context.get("unit");
 		EntityType unitType = EntityType.fromKey(mobName);
@@ -66,10 +66,10 @@ public class TestUnit extends DeltaCommand {
 		if (TEST_UNIT != null) TEST_UNIT.remove();
 		TEST_UNIT = new LivingEntity(unitType);
 
-		TEST_UNIT.setInstance(world, Main.getMobPosition());
-		LOGGER.debug("Unit instance is {}, with Pos on {}", world, Main.getMobPosition());
-		TEST_UNIT.lookAt(Main.getSpawnPosition().withY(51));
-		LOGGER.debug("Unit look at {}", Main.getSpawnPosition().withY(51));
+		TEST_UNIT.setInstance(world, TestPlugin.getMobPosition());
+		LOGGER.debug("Unit instance is {}, with Pos on {}", world, TestPlugin.getMobPosition());
+		TEST_UNIT.lookAt(TestPlugin.getSpawnPosition().withY(51));
+		LOGGER.debug("Unit look at {}", TestPlugin.getSpawnPosition().withY(51));
 		sender.sendMessage("Test unit "+mobName+" spawned.");
 	}
 
@@ -84,7 +84,7 @@ public class TestUnit extends DeltaCommand {
 		TEST_UNIT.remove();
 		sender.sendMessage("Test unit "+TEST_UNIT+" removed.");
 		TEST_UNIT = null;
-		Pos mobPosition = Main.getMobPosition().withY(49);
+		Pos mobPosition = TestPlugin.getMobPosition().withY(49);
 		world.setBlock(mobPosition, Block.STONE_BRICKS);
 	}
 

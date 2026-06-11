@@ -1,6 +1,6 @@
 package delta.cion.cherry.server;
 
-import delta.cion.cherry.api.Plugin;
+import delta.cion.cherry.api.plugin.Plugin;
 import delta.cion.cherry.api.ServerBranding;
 import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.online.WhiteList;

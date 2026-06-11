@@ -1,13 +1,10 @@
 package delta.cion.cherry.server.command;
 
-import delta.cion.cherry.api.Plugin;
 import delta.cion.cherry.api.command.DeltaCommand;
 import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.permission.PermissionManager;
-import delta.cion.cherry.server.CherryServer;
 import delta.cion.cherry.server.plugin.PluginManager;
 import net.minestom.server.command.CommandSender;
-import net.minestom.server.command.ConsoleSender;
 import net.minestom.server.command.builder.Command;
 import net.minestom.server.command.builder.CommandContext;
 import net.minestom.server.entity.Player;

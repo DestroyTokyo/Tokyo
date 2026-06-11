@@ -63,7 +63,7 @@ tasks {
 ```java
 package delta.cion.cherry.test_plugin;
 
-import delta.cion.cherry.api.Plugin;
+import delta.cion.cherry.api.plugin.Plugin;
 
 public class Main extends Plugin {
 

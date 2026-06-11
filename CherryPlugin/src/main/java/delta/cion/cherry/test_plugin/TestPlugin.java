@@ -1,6 +1,6 @@
 package delta.cion.cherry.test_plugin;
 
-import delta.cion.cherry.api.Plugin;
+import delta.cion.cherry.api.plugin.Plugin;
 import delta.cion.cherry.api.command.DeltaCommand;
 import delta.cion.cherry.api.event.DeltaEvent;
 import delta.cion.cherry.test_plugin.command.Gamemode;
@@ -17,7 +17,7 @@ import net.minestom.server.event.entity.EntityDamageEvent;
 import net.minestom.server.event.item.ItemDropEvent;
 import net.minestom.server.event.player.*;
 
-public class Main extends Plugin {
+public class TestPlugin extends Plugin {
 
 	private static final Pos SPAWN_POSITION = new Pos(0.5, 50.0, 0.5);
 	private static final Pos MOB_POSITION = new Pos(0.5, 50.0, 3.5);
@@ -38,8 +38,8 @@ public class Main extends Plugin {
 	private static final DeltaCommand GAMEMODE_COMMAND = new Gamemode();
 	private static final DeltaCommand GET_COMMAND = new GetCommand();
 
-	public Main() {
-		super("Cherry-Test-Plugin");
+	public TestPlugin(String id, String name, String version) {
+		super(id, name, version);
 	}
 
 	@Override

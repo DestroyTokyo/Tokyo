@@ -1,6 +1,6 @@
 package delta.cion.cherry.api.event;
 
-import delta.cion.cherry.api.Plugin;
+import delta.cion.cherry.api.plugin.Plugin;
 import net.minestom.server.event.Event;
 import net.minestom.server.event.EventListener;
 import net.minestom.server.event.EventNode;

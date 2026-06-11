@@ -3,7 +3,7 @@ package delta.cion.cherry.test_plugin.event;
 import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.online.WhiteList;
 import delta.cion.cherry.api.event.DeltaEvent;
-import delta.cion.cherry.test_plugin.Main;
+import delta.cion.cherry.test_plugin.TestPlugin;
 import delta.cion.cherry.test_plugin.util.InfoBook;
 import delta.cion.cherry.test_plugin.world.BaseWorld;
 import delta.cion.cherry.test_plugin.world.WorldGenerator;
@@ -46,7 +46,7 @@ public class PlayerConnectionEvent {
 			}
 
 			event.setSpawningInstance(baseWorld.getWorldContainer());
-			player.setRespawnPoint(Main.getSpawnPosition());
+			player.setRespawnPoint(TestPlugin.getSpawnPosition());
 			InfoBook.getBook(player);
 			LOGGER.info("Player {} [{}] connected", playerName, player.getUuid());
 		});
