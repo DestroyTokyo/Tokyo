@@ -3,29 +3,17 @@ package delta.cion.cherry.test_plugin.command;
 import delta.cion.cherry.api.command.DeltaCommand;
 import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.permission.PermissionManager;
-import delta.cion.cherry.api.world.WorldRegistration;
-import delta.cion.cherry.test_plugin.Main;
 import net.minestom.server.command.CommandSender;
 import net.minestom.server.command.builder.Command;
 import net.minestom.server.command.builder.CommandContext;
 import net.minestom.server.command.builder.arguments.ArgumentString;
 import net.minestom.server.command.builder.arguments.ArgumentType;
-import net.minestom.server.command.builder.arguments.ArgumentWord;
-import net.minestom.server.command.builder.arguments.minecraft.ArgumentIntRange;
 import net.minestom.server.command.builder.arguments.number.ArgumentInteger;
 import net.minestom.server.command.builder.suggestion.SuggestionEntry;
-import net.minestom.server.coordinate.Pos;
-import net.minestom.server.entity.EntityType;
-import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.entity.Player;
 import net.minestom.server.entity.PlayerHand;
-import net.minestom.server.instance.InstanceContainer;
-import net.minestom.server.instance.block.Block;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.minestom.server.recipe.display.SlotDisplay;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class GetCommand extends DeltaCommand {
 
