@@ -10,7 +10,6 @@
 .idea
 
 # <= Sometimes it appears =>
-./src/
 test/
 
 # <= Gradle =>
