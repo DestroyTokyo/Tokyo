@@ -37,9 +37,7 @@ tasks {
 	processResources {
 		filteringCharset = "UTF-8"
 		filesMatching("cherry.properties") {
-			filter { line ->
-				line.replace("\${project.version}", projectVersion)
-			}
+			expand("project.version" to projectVersion)
 		}
 	}
 
