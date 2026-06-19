@@ -239,7 +239,7 @@ class PluginLoader {
 			List<String> depend = parseDependencyList(props.getProperty("dependencies"));
 			pluginDependencies.put(pluginId, depend);
 
-			LOGGER.info("Loaded plugin: {} v{}", pluginId, pluginVersion);
+			LOGGER.info("Loaded plugin: {} {}", pluginId, pluginVersion);
 		} catch (Exception e) {
 			LOGGER.error("Failed to load plugin from {}: {}", jar.getName(), e.getMessage());
 		}
