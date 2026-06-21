@@ -7,13 +7,15 @@ import net.minestom.server.utils.chunk.ChunkSupplier;
 
 public class BaseWorld {
 
+	private final String NAMESPACE;
 	private final String WORLD_NAME;
 	private final InstanceContainer WORLD_CONTAINER;
 
-	public BaseWorld(String name, InstanceContainer worldContainer) {
+	public BaseWorld(String namespace, String name, InstanceContainer worldContainer) {
+		this.NAMESPACE = namespace;
 		this.WORLD_NAME = name;
 		this.WORLD_CONTAINER = worldContainer;
-		WorldRegistration.registerWorld(this.WORLD_NAME, this.WORLD_CONTAINER);
+		WorldRegistration.registerWorld(this.NAMESPACE, this.WORLD_NAME, this.WORLD_CONTAINER);
 	}
 
 	public String getWorldName() {

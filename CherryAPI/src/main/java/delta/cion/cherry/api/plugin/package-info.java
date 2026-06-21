@@ -3,4 +3,4 @@
  * Status, Interface and no more
  */
 
-package delta.cion.cherry.api.world;
+package delta.cion.cherry.api.plugin;

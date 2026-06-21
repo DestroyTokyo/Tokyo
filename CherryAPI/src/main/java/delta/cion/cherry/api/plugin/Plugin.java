@@ -64,16 +64,25 @@ public abstract class Plugin {
 		return this.pluginDir;
 	}
 
-	public void saveFromResources(String fileName) {
+	public void saveFromResources(String path, String fileName) {
+		if (path == null) path = "";
 		try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName)) {
 			if (inputStream == null) throw new FileNotFoundException("Cannot found "+fileName+" in "+this.id);
 			byte[] bytes = inputStream.readAllBytes();
-			try (OutputStream outputStream = new FileOutputStream(fileName)) {
+			try (OutputStream outputStream = new FileOutputStream(new File(path, fileName))) {
 				outputStream.write(bytes);
 			}
 		} catch (IOException exception) {
 			throw new RuntimeException("Cannot write file from plugin assets. Plugin: "+this.id);
 		}
+	}
+
+	public void saveFromResources(String fileName) {
+		saveFromResources("", fileName);
+	}
+
+	public void saveFromResources(File parentDir, String fileName) {
+		saveFromResources(parentDir.getPath(), fileName);
 	}
 
 	// System methods

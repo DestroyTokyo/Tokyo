@@ -12,15 +12,15 @@ public class DeltaEvent<T extends Event> implements AutoCloseable {
 	private final UUID EVENT_UUID;
 	private final Class<T> MINECRAFT_EVENT;
 
-	private final EventNode<Event> MY_NODE;
+	private final EventNode<Event> EVENT_NODE;
 	private final EventListener<Event> EVENT_LISTENER;
 
 	public DeltaEvent(Class<T> event, Consumer<T> handler) {
 		this.EVENT_UUID = UUID.randomUUID();
 		this.MINECRAFT_EVENT = event;
-		this.MY_NODE = EventNode.all(EVENT_UUID.toString());
+		this.EVENT_NODE = EventNode.all(EVENT_UUID.toString());
 		this.EVENT_LISTENER = buildEvent(new EventRegistration<>(MINECRAFT_EVENT, EVENT_UUID.toString(), handler));
-		this.MY_NODE.addListener(EVENT_LISTENER);
+		this.EVENT_NODE.addListener(EVENT_LISTENER);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -34,11 +34,11 @@ public class DeltaEvent<T extends Event> implements AutoCloseable {
 	}
 
 	public void register() {
-		Plugin.getGlobalEventHandler().addChild(this.MY_NODE);
+		Plugin.getGlobalEventHandler().addChild(this.EVENT_NODE);
 	}
 
 	public void unregister() {
-		Plugin.getGlobalEventHandler().removeChild(this.MY_NODE);
+		Plugin.getGlobalEventHandler().removeChild(this.EVENT_NODE);
 	}
 
 	public UUID getEventUuid() {

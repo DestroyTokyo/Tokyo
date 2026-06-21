@@ -74,6 +74,8 @@ public class TestPlugin extends Plugin {
 
 	@Override
 	public void onDisable() {
+		PlayerConnectionEvent.close();
+
 		// Events
 		WORLD_BORDER.unregister();
 		DROP_ITEM.unregister();

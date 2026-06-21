@@ -3,6 +3,7 @@ package delta.cion.cherry.test_plugin.event;
 import delta.cion.cherry.api.locales.Localize;
 import delta.cion.cherry.api.online.WhiteList;
 import delta.cion.cherry.api.event.DeltaEvent;
+import delta.cion.cherry.api.world.WorldRegistration;
 import delta.cion.cherry.test_plugin.TestPlugin;
 import delta.cion.cherry.test_plugin.util.InfoBook;
 import delta.cion.cherry.test_plugin.world.BaseWorld;
@@ -16,9 +17,6 @@ import net.minestom.server.instance.LightingChunk;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.Format;
-import java.util.Formatter;
-
 public class PlayerConnectionEvent {
 
 	private static BaseWorld baseWorld;
@@ -27,7 +25,7 @@ public class PlayerConnectionEvent {
 
 	public static void init() {
 		InstanceManager instanceManager = MinecraftServer.getInstanceManager();
-		baseWorld = new BaseWorld("base_world", instanceManager.createInstanceContainer());
+		baseWorld = new BaseWorld("test", "base_world", instanceManager.createInstanceContainer());
 		baseWorld.setWorldGenerator(new WorldGenerator());
 		baseWorld.setWorldSupplier(LightingChunk::new);
 	}
@@ -61,5 +59,9 @@ public class PlayerConnectionEvent {
 	private static boolean isWhitelisted(Player player) {
 		if (WhiteList.isWhitelisted(player.getUsername())) return true;
 		return WhiteList.isWhitelisted(player.getUuid());
+	}
+
+	public static void close() {
+		MinecraftServer.getInstanceManager().unregisterInstance(baseWorld.getWorldContainer());
 	}
 }
