@@ -22,7 +22,7 @@ public abstract class Plugin {
 		this.name = name;
 		this.version = version;
 
-		this.pluginDir = new File("plugins", name);
+		this.pluginDir = new File("plugins", this.id);
 
 	}
 
