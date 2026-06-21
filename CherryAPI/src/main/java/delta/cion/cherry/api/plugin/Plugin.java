@@ -66,6 +66,13 @@ public abstract class Plugin {
 
 	public void saveFromResources(String path, String fileName) {
 		if (path == null) path = "";
+
+		File parentFile = new File(path);
+		if (parentFile.exists() && !parentFile.isDirectory())
+			throw new RuntimeException("Cannot write file from plugin assets. Needed save-path is a file. Plugin: "+this.id);
+
+		if (!parentFile.exists()) parentFile.mkdirs();
+
 		try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName)) {
 			if (inputStream == null) throw new FileNotFoundException("Cannot found "+fileName+" in "+this.id);
 			byte[] bytes = inputStream.readAllBytes();
