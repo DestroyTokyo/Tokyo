@@ -30,7 +30,7 @@ jobs:
                 with:
                     name: CherryBuild
                     path: |
-                        CherryAPI/build/libs/*.jar
-                        CherryServer/build/libs/*.jar
-                        CherryPlugin/build/libs/*.jar
+                        Tokyo/build/libs/*.jar
+                        TokyoAPI/build/libs/*.jar
+                        TokyoTest/build/libs/*.jar
                     if-no-files-found: error

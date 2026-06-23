@@ -12,7 +12,7 @@
 	</module>
 
 	<module name="SuppressionSingleFilter">
-		<property name="files" value="[\\/](CherryPlugin|CherryServer)[\\/].*"/>
+		<property name="files" value="[\\/](TokyoTest|Tokyo)[\\/].*"/>
 		<property name="checks" value="JavadocPackage"/>
 	</module>
 </module>

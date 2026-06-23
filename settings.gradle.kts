@@ -1,7 +1,7 @@
 // Cool project name lol
-rootProject.name = "Cherry"
+rootProject.name = "Tokyo"
 
-// CherryPlugin - For tests only.
-// CherryAPI - Main Cherry Api. Server and plugins contains it
-// CherryServer - Basic server. Contains API and no more.
-include("CherryAPI", "CherryServer", "CherryPlugin")
+// TokyoTest - Plugin for tests only.
+// TokyoAPI - Main Tokyo Api. Server and plugins contains it
+// Tokyo - Basic server. Contains API and no more.
+include("TokyoAPI", "Tokyo", "TokyoTest")

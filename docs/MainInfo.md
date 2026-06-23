@@ -49,7 +49,7 @@ as the name is changed.
 
 <p align="center">
     <a href="#">
-        <img src="https://img.shields.io/github/last-commit/CherryServer/CherryServer?display_timestamp=committer&style=flat-square&color=000000"></a>
+        <img src="https://img.shields.io/github/last-commit/DestroyTokyo/Tokyo?display_timestamp=committer&style=flat-square&color=000000"></a>
     <a href="#">
-        <img src="https://img.shields.io/github/created-at/CherryServer/CherryServer?style=flat-square&color=000000"></a>
+        <img src="https://img.shields.io/github/created-at/DestroyTokyo/Tokyo?style=flat-square&color=000000"></a>
 </p>
