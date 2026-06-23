@@ -5,7 +5,7 @@ import delta.cion.tokyo.api.ServerBranding;
 import delta.cion.tokyo.api.locales.Localize;
 import delta.cion.tokyo.api.online.WhiteList;
 import delta.cion.tokyo.api.permission.PermissionHandler;
-import delta.cion.cherry.server.command.*;
+import delta.cion.tokyo.server.command.*;
 import delta.cion.tokyo.server.command.*;
 import delta.cion.tokyo.server.config.property.PropertiesHandler;
 import delta.cion.tokyo.server.console.ConsoleHandler;

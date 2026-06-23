@@ -37,7 +37,7 @@ tasks {
 	processResources {
 		filteringCharset = "UTF-8"
 		filesMatching("tokyo.properties") {
-			expand("project.version" to projectVersion)
+			expand("version" to projectVersion)
 		}
 	}
 
