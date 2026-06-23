@@ -83,13 +83,13 @@ public class TestUnit extends DeltaCommand {
 		sender.sendMessage("Test unit "+TEST_UNIT+" removed.");
 		TEST_UNIT = null;
 		Pos mobPosition = TestPlugin.getMobPosition().withY(49);
-		world.setBlock(mobPosition, Block.STONE_BRICKS);
+		world.setBlock(mobPosition, Block.RED_WOOL);
 	}
 
 	private InstanceContainer getWorld() {
-		InstanceContainer world = WorldRegistration.getWorld("base_world");
+		InstanceContainer world = WorldRegistration.getWorld("test:base_world");
 		if (world != null) return world;
-		LOGGER.warn("Cannot spawn test unit. base_world not found.");
+		LOGGER.warn("Cannot spawn test unit. test:base_world not found.");
 		return null;
 	}
 }

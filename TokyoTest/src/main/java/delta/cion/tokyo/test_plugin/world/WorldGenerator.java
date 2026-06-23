@@ -43,7 +43,8 @@ public class WorldGenerator implements Generator {
 						if (isVoidLayer(y))
 							unit.modifier().setBlock(x, y, z, Block.BEDROCK);
 						else if (isFloorOrCeiling(y))
-							unit.modifier().setBlock(x, y, z, Block.STONE_BRICKS);
+							if (y == 49) unit.modifier().setBlock(x, y, z, Block.RED_WOOL);
+							else unit.modifier().setBlock(x, y, z, Block.STONE_BRICKS);
 						else if (isWallLayer(y)) {
 							final boolean interior = isInteriorSpace(x, z);
 							if (interior) unit.modifier().setBlock(x, y, z, Block.AIR);
