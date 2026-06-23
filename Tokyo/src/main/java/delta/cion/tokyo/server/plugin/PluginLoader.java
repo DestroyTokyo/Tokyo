@@ -255,7 +255,8 @@ class PluginLoader {
 		}
 		plugins.put(id, plugin);
 		pluginTimestamps.put(jarFile, jarFile.lastModified());
-		LOGGER.info("Loaded plugin: {} v{} from {}", id, plugin.getVersion(), jarFile.getName());
+		LOGGER.info("Loaded plugin: {} from {}", id, jarFile.getName());
+		LOGGER.info("Plugin {} version: {}", id, plugin.getVersion());
 	}
 
 	private Plugin loadPluginFromJar(File jar) {
