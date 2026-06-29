@@ -9,6 +9,7 @@ import delta.cion.tokyo.server.command.*;
 import delta.cion.tokyo.server.command.*;
 import delta.cion.tokyo.server.config.property.PropertiesHandler;
 import delta.cion.tokyo.server.console.ConsoleHandler;
+import delta.cion.tokyo.server.console.DeExceptionManager;
 import delta.cion.tokyo.server.console.LogbackConfig;
 import delta.cion.tokyo.server.license.LicenseFile;
 import delta.cion.tokyo.server.motd.MOTDHandler;
@@ -52,6 +53,7 @@ public class Server {
 
 	private void start() {
 		new LicenseFile();
+		DeExceptionManager.init();
 
 		initConfigs();
 		loadConfig();
