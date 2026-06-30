@@ -1,6 +1,5 @@
 /**
- * Plugin classes
- * Status, Interface and no more
+ * World utils
  */
 
 package delta.cion.tokyo.api.world;
