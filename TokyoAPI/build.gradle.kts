@@ -8,6 +8,7 @@ val projectVersion: String by project
 val minestomVersion: String by project
 val logbackVersion: String by project
 val jsonVersion: String by project
+val zstdVersion: String by project
 
 group = "delta.cion.tokyo.api"
 version = projectVersion
@@ -15,6 +16,7 @@ version = projectVersion
 dependencies {
 	implementation("net.minestom:minestom-snapshots:$minestomVersion")
 	implementation("ch.qos.logback:logback-classic:${logbackVersion}")
+	implementation("com.github.luben:zstd-jni:${zstdVersion}")
 	implementation("org.json:json:${jsonVersion}")
 }
 

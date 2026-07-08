@@ -5,7 +5,7 @@ import delta.cion.tokyo.api.online.WhiteList;
 import delta.cion.tokyo.api.event.DeltaEvent;
 import delta.cion.tokyo.test_plugin.TestPlugin;
 import delta.cion.tokyo.test_plugin.util.InfoBook;
-import delta.cion.tokyo.test_plugin.world.BaseWorld;
+import delta.cion.tokyo.api.world.BaseWorld;
 import delta.cion.tokyo.test_plugin.world.WorldGenerator;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
