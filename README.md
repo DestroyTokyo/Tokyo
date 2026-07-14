@@ -36,6 +36,11 @@ Ruby (Репо приватный, заброшен разрабом (Мной) 
 Emerald (Репо приватный, заброшено мной уже больше года)
 	(По сути первая попытка в сервера на Minestom)
 	https://github.com/Project-Violette/Emerald
+Lavender
+	(Идея реализации Bukkit API & Spigot API)
+	(Само ядро их содержать не будет, но будет модуль совместимости)
+	Оригинальный репо: https://github.com/wildmaster84/Lavender
+	Реализация: https://github.com/DestroyTokyo/DeBukkit 
 ```
 
 ---
