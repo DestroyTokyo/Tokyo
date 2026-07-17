@@ -1,6 +1,8 @@
 package delta.cion.tokyo.api.data;
 
+import net.minestom.server.network.NetworkBuffer.*;
 import net.minestom.server.network.NetworkBuffer;
+
 
 /**
  * Simple .dat file creator
@@ -15,5 +17,8 @@ public class DataWriter {
 
 	public byte[] convertToByte(Object object) {
 
+		return NetworkBuffer.makeArray(buffer -> {
+			buffer.write(NetworkBuffer.INT, 123);
+		});
 	}
 }
